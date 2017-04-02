@@ -1,7 +1,7 @@
 const request = require('request'),
     _ = require('lodash');
 
-const API_KEY = process.env.MBTA_KEY;
+const API_KEY = process.env.API_KEY;
 const BASE_URL = 'http://realtime.mbta.com/developer/api/v2/';
 
 const getAlertsForLine = (line, callback) => {

@@ -26,10 +26,12 @@ const handlers = {
     },
     'SayHello': function () {
         mbta.getAlertsForLine('Orange', alerts => {
-            mbta.getNextTrainForStation('Natick Center', nextTrainTime => {
-                utils.formatResponse('Worcester', parseInt(nextTrainTime), 'Orange', alerts, response => {
-                    this.emit(':tellWithCard', response, this.t("SKILL_NAME"), response);
-                });
+            mbta.getAlertsForLine('Worcester', crAlerts => {
+                mbta.getNextTrainForStation('Natick Center', nextTrainTime => {
+                    utils.formatResponse('Worcester', parseInt(nextTrainTime), 'Orange', alerts, crAlerts, response => {
+                        this.emit(':tellWithCard', response, this.t("SKILL_NAME"), response);
+                    });
+                })
             })
         });
     }
@@ -46,12 +48,3 @@ const languageStrings = {
         }
     }
 };
-
-
-mbta.getAlertsForLine('Orange', alerts => {
-    mbta.getNextTrainForStation('Natick Center', nextTrainTime => {
-        utils.formatResponse('Worcester', parseInt(nextTrainTime), 'Orange', alerts, response => {
-            console.log(response);
-        });
-    })
-});
