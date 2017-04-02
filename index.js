@@ -2,8 +2,7 @@
 
 const Alexa = require("alexa-sdk"),
     mbta = require('./src/mbta'),
-    utils = require('./src/utils'),
-    env = require('dotenv').load();
+    utils = require('./src/utils');
 
 const APP_ID = process.env.APP_ID;
 
@@ -47,3 +46,12 @@ const languageStrings = {
         }
     }
 };
+
+
+mbta.getAlertsForLine('Orange', alerts => {
+    mbta.getNextTrainForStation('Natick Center', nextTrainTime => {
+        utils.formatResponse('Worcester', parseInt(nextTrainTime), 'Orange', alerts, response => {
+            console.log(response);
+        });
+    })
+});
