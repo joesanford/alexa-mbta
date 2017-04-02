@@ -1,6 +1,6 @@
 'use strict';
 
-const Alexa = require("alexa-sdk"),
+const Alexa = require('alexa-sdk'),
     mbta = require('./src/mbta'),
     utils = require('./src/utils');
 
@@ -16,15 +16,12 @@ exports.handler = function(event, context, callback) {
 
 const handlers = {
     'LaunchRequest': function () {
-        this.emit('SayHello');
+        this.emit('SayStatus');
     },
-    'HelloWorldIntent': function () {
-        this.emit('SayHello')
+    'MBTAIntent': function () {
+        this.emit('SayStatus')
     },
-    "GetNewFactIntent": function () {
-        this.emit('SayHello')
-    },
-    'SayHello': function () {
+    'SayStatus': function () {
         mbta.getAlertsForLine('Orange', alerts => {
             mbta.getAlertsForLine('Worcester', crAlerts => {
                 mbta.getNextTrainForStation('Natick Center', nextTrainTime => {
