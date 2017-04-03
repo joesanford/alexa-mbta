@@ -1,5 +1,3 @@
-'use strict';
-
 const Alexa = require('alexa-sdk'),
     mbta = require('./src/mbta'),
     utils = require('./src/utils');
