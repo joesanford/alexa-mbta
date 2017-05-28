@@ -3,7 +3,7 @@ const formatResponse = (timeLine, nextTrainTime, alertsLine, alerts, crAlerts) =
         let minutes = (nextTrainTime === 1) ? 'minute' : 'minutes',
             alertsCount = (alerts.length === 1) ? 'alert' : 'alerts',
             crAlertsCount = (crAlerts.length === 1) ? 'alert' : 'alerts',
-            response = `The next inbound train for ${timeLine} arrives in ${parseInt(nextTrainTime)} ${minutes}, with ${crAlerts.length} ${crAlertsCount}. For the ${alertsLine} line, there are ${alerts.length} major ${alertsCount}`;
+            response = `The next inbound train to Boston arrives in ${parseInt(nextTrainTime)} ${minutes}, with ${crAlerts.length} ${crAlertsCount}. For the ${alertsLine} line, there are ${alerts.length} major ${alertsCount}. Enjoy your trip!`;
         resolve(response);
     });
 };

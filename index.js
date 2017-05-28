@@ -40,7 +40,7 @@ const handlers = {
                 return utils.formatResponse(crLine, parseInt(nextTrainTime), tLine, orangeAlerts, crAlerts)
             })
             .then(response => this.emit(':tellWithCard', response, this.t("SKILL_NAME"), response))
-            .catch((msg, error) => console.error(msg + " " + error));
+            .catch((msg, error) => console.error(`${msg} ${error}`));
     }
 };
 
