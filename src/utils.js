@@ -5,7 +5,7 @@ const formatResponse = (timeLine, nextTrainTime, alertsLine, alerts) => {
 
         let response = `The next inbound train to Boston arrives in ${parseInt(nextTrainTime)} ${minutes}`;
 
-        if (alerts) {
+        if (alerts.length) {
             response += `, for the ${alertsLine} line, there are ${alerts.length} major ${alertsCount}`;
         }
 
