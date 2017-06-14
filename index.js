@@ -24,20 +24,15 @@ const handlers = {
             tLine = 'Orange',
             station = 'Natick Center';
 
-        let orangeAlerts,
-            crAlerts;
+        let orangeAlerts;
 
         mbta.getAlertsForLine(tLine)
             .then(alerts => {
                 orangeAlerts = alerts;
-                return mbta.getAlertsForLine(crLine)
-            })
-            .then(alerts => {
-                crAlerts = alerts;
                 return mbta.getNextTrainForStation(station)
             })
             .then(nextTrainTime => {
-                return utils.formatResponse(crLine, parseInt(nextTrainTime), tLine, orangeAlerts, crAlerts)
+                return utils.formatResponse(crLine, parseInt(nextTrainTime), tLine, orangeAlerts)
             })
             .then(response => this.emit(':tellWithCard', response, this.t("SKILL_NAME"), response))
             .catch((msg, error) => console.error(`${msg} ${error}`));
